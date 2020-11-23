@@ -1,38 +1,146 @@
-.App {
-  text-align: center;
+:root{
+  --transparent: transparent;
+  /* I want to only use these colors  */
+  --brownish-pink:#9C6359;
+  --light-grey:rgb(170, 177, 184);
+  --grey: #546472;
+  --brown: #3F2927;
+  --other-brownish-pink: #7D524D;
+  --white: #D7BBB7;
+  --pink: #B25857;
+  --light-pink: #E39299;
+  --blue: #546472;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:wght@400;600&display=swap');
+/* font-family: 'Josefin Sans', sans-serif;
+font-family: 'Open Sans', sans-serif; */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  background: linear-gradient(217deg, var(--pink),  rgba(255,0,0,0) 90%),
+            linear-gradient(127deg, var(--light-pink),rgba(0,255,0,0) 40%),
+            linear-gradient(336deg, var(--blue), rgba(0,0,255,0) 100%);
+	color:var(--white);
+	font-family: 'Josefin Sans', sans-serif;
+	min-height: 100vh;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.nav {
+  background-color: var(--transparent);
+  color: var(--white);
   display: flex;
-  flex-direction: column;
+  /* flex-direction: row; */
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
-.App-link {
-  color: #61dafb;
+.nav .logo {
+  margin-left: 20px;
+  margin-top: 8px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav .form-toggle button, .nav .form-toggle div{
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 20px;
+  letter-spacing: 1px;
+  background-color: transparent;
+  border: none;
+  margin: 0 20px;
+  color: var(--white)
+}
+
+.nav .form-toggle {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 20px;
+}
+
+.nav .header-items {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+.form, .form-title {
+  padding: 20px;
+}
+
+.home .hero-img {
+  text-align: center;
+  padding: 200px 0;
+}
+
+.home .hero-img h1 {
+  /* width: 100%; */
+  font-size: 120px;
+  text-shadow: -6px 6px var(--grey);
+  /* margin: 200px 0; */
+}
+
+.lists-logo {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 35px;
+  text-shadow: -5px 5px var(--grey);
+  letter-spacing: 4px;
+}
+
+.lists .three-lists{
+  display: flex;
+  justify-content: space-between;
+  max-width: 1300px;
+  padding: 0 20px;
+  margin: auto;
+}
+
+.list {
+  /* border: 1px solid black; */
+  width: 33%;  
+  /* background-color: rgb(170, 177, 184, .6); */
+}
+
+.lists .new-books{
+  text-align: center;
+  margin: 10px 0 20px 0;
+}
+
+.lists .new-books form input{
+  padding: 5px 20px;
+  background-color: var(--other-brownish-pink);
+  border: none;
+  color: var(--white);
+  font-size: 15px;
+  margin-left: 5px;
+}
+
+.lists .new-books form input:hover{
+  background-color: var(--brownish-pink);
+}
+
+.lists .new-books form .text-field {
+  margin: 0 3px;
+  background-color: var(--white);
+  border: none;
+  padding: 5px;
+}
+
+.lists .new-books form .text-field:hover,
+.lists .new-books form .text-field:focus{
+  background-color: white;
+}
+
+.list h3 {
+  text-align: center;
+  padding: 10px 0;
+  font-size: 25px;
+  background-color: var(--blue);
+}
+
+.book-info {
+  color: var(--brown);
+  margin: 5px 0;
+  padding: 2px 5px;
+  border: 1px solid rgb(170, 177, 184);
 }
