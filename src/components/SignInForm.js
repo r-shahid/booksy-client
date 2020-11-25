@@ -38,6 +38,7 @@ function SignInForm({ setBooks, token, setToken }) {
 			data: {
 				title: 'sample book',
 				author: 'sample author',
+				rating: 0,
 				isTBR: true,
 				isReading: false,
 				isRead: false,
