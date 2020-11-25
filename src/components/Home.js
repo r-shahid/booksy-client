@@ -1,14 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import Nav from './Nav.js'
-import SignInForm from './SignInForm'
-import LoginForm from './LoginForm'
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import Nav from './Nav.js';
+import SignInForm from './SignInForm';
+import LoginForm from './LoginForm';
+import { Redirect } from 'react-router-dom';
 import heroimg from '../images/thirdtimesthecharm.png';
 
-const Home = ({books, setBooks, token, setToken}) => {
+const Home = ({ books, setBooks, token, setToken }) => {
 	const [form, setForm] = useState('');
-	// const [token, setToken] = useState('')
-	// const [books, setBooks] = useState([])
 
 	const handleForm = (input) => {
 		setForm(input);
@@ -19,32 +17,9 @@ const Home = ({books, setBooks, token, setToken}) => {
 			case 'login':
 				return <LoginForm setToken={setToken} />;
 			default:
-				return <SignInForm />;
+				return <SignInForm token={token} setBooks={setBooks} setToken={setToken}/>;
 		}
 	};
-
-	const logBooks = () =>{
-		console.log(books)
-		
-	}
-
-	// const setBooksData = (data) =>{
-	// 	setBooks(data)
-	// }
-
-	// const getBooks = () => {
-	// 	fetch(`http://localhost:3000/books`, {
-	// 		method: "get",
-	// 		headers: {
-	// 			Authorization: `Bearer ${token}`,
-	// 		},
-	// 	})
-	// 		.then((res) => res.json())
-	// 		.then((data) => {
-	// 			// setBooksData(data)
-	// 			setBooks(data)
-	// 		})			
-	// }
 
 	const getBooks = async () => {
 		const res = await fetch(`http://localhost:3000/books`, {
@@ -52,23 +27,11 @@ const Home = ({books, setBooks, token, setToken}) => {
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		})
-		const json = await res.json()
-		setBooks(json);
-			
+		});
+		const json = await res.json();
+		setBooks(json)
 	};
 
-	// const autoLogin = () =>{
-	// 	fetch(`http://localhost:3000/auto_login`, {
-	// 		method: 'get',
-	// 		headers: {
-	// 			Authorization: `Bearer ${token}`,
-	// 		},
-	// 	})
-	// 		.then((res) => res.json())
-	// 		.then(() => getBooks())
-	// 		.then(() => logBooks());
-	// }
 	const autoLogin = async () => {
 		const res = await fetch(`http://localhost:3000/auto_login`, {
 			method: 'get',
@@ -76,16 +39,14 @@ const Home = ({books, setBooks, token, setToken}) => {
 				Authorization: `Bearer ${token}`,
 			},
 		})
-			// const json = await res.json()
-			.then(() => getBooks())
-			.then(() => logBooks());
+			.then(() => getBooks());
 	};
 
 	useEffect(() => {
-		if (token) {
-			autoLogin()
-		}
-	}, [token])
+		autoLogin()
+	}, [token]);
+	console.log(token);
+	console.log(books);
 
 	return (
 		<div className='home'>
@@ -95,6 +56,7 @@ const Home = ({books, setBooks, token, setToken}) => {
 				<h4>the better book tracker</h4>
 			</div>
 			{renderForm()}
+			{books[0] ? <Redirect to='/lists' /> : console.log('not redirecting')}
 		</div>
 	);
 };

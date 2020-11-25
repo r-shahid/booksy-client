@@ -1,15 +1,16 @@
 :root{
-  --transparent: transparent;
-  /* I want to only use these colors  */
   --brownish-pink:#9C6359;
   --light-grey:rgb(170, 177, 184);
   --grey: #546472;
   --brown: #3F2927;
   --other-brownish-pink: #7D524D;
-  --white: #D7BBB7;
+  --white: #d7bbb7;
   --pink: #B25857;
   --light-pink: #E39299;
   --blue: #546472;
+  --gradient: linear-gradient(217deg, var(--pink),  rgba(255,0,0,0) 90%),
+            linear-gradient(127deg, var(--light-pink),rgba(0,255,0,0) 40%),
+            linear-gradient(336deg, var(--blue), rgba(0,0,255,0) 100%);
 }
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Open+Sans:wght@400;600&display=swap');
 /* font-family: 'Josefin Sans', sans-serif;
@@ -17,21 +18,32 @@ font-family: 'Open Sans', sans-serif; */
 * {
 	margin: 0;
 	padding: 0;
-	box-sizing: border-box;
+  box-sizing: border-box;
+  font-family: 'Josefin Sans', sans-serif;
 }
 body {
-  background: linear-gradient(217deg, var(--pink),  rgba(255,0,0,0) 90%),
-            linear-gradient(127deg, var(--light-pink),rgba(0,255,0,0) 40%),
-            linear-gradient(336deg, var(--blue), rgba(0,0,255,0) 100%);
+  background: var(--gradient);
+  background-image: var(--gradient);
+  background-size: 200%;
 	color:var(--white);
-	font-family: 'Josefin Sans', sans-serif;
-	min-height: 100vh;
+  min-height: 100vh;
+  animation: bg-animation 6s infinite alternate;
 }
+
+@keyframes bg-animation {
+  0% {
+    background-position: left;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+
 .nav {
-  background-color: var(--transparent);
+  background-color: transparent;
   color: var(--white);
   display: flex;
-  /* flex-direction: row; */
   justify-content: space-between;
   align-items: center;
   font-family: 'Josefin Sans', sans-serif;
@@ -52,7 +64,7 @@ body {
   color: var(--white)
 }
 
-.nav .form-toggle {
+/* .nav .form-toggle {
   display: flex;
   justify-content: space-around;
   padding: 10px 20px;
@@ -60,11 +72,36 @@ body {
 
 .nav .header-items {
   font-size: 20px;
-  margin-right: 20px;
+  margin-right: 10px;
+} */
+
+nav {
+  padding: 5px 0 5px 0px;
+  padding-top: 0px;
+}
+
+.book-img-logo {
+  height: 50px;
+  padding-top: 3px;
+}
+
+.form {
+  max-width: 600px;
+  margin: auto;
+  background-color: rgba(215, 187, 183, .2);
 }
 
 .form, .form-title {
   padding: 20px;
+}
+
+.input-field label {
+  color: var(--pink);
+  font-size: 20px;
+}
+
+.input-field input[type=text]:focus + label {
+  color: var(--blue);
 }
 
 .home .hero-img {
@@ -75,14 +112,23 @@ body {
 .home .hero-img h1 {
   /* width: 100%; */
   font-size: 120px;
+  font-weight: 700;
   text-shadow: -6px 6px var(--grey);
   /* margin: 200px 0; */
 }
 
+.lists {
+  height: 90vh;
+}
+
 .lists-logo {
   text-align: center;
+}
+
+.lists-logo h1 {
+  font-size: 80px;
+  font-weight: 700;
   text-transform: uppercase;
-  font-size: 35px;
   text-shadow: -5px 5px var(--grey);
   letter-spacing: 4px;
 }
@@ -107,28 +153,32 @@ body {
 }
 
 .lists .new-books form input{
-  padding: 5px 20px;
-  background-color: var(--other-brownish-pink);
+  /* background-color: var(--other-brownish-pink); */
   border: none;
-  color: var(--white);
+  color: var(--other-brownish-pink);
   font-size: 15px;
   margin-left: 5px;
+  max-width: 300px;
 }
-
-.lists .new-books form input:hover{
-  background-color: var(--brownish-pink);
+::placeholder {
+  color: var(--pink)
 }
 
 .lists .new-books form .text-field {
   margin: 0 3px;
   background-color: var(--white);
   border: none;
-  padding: 5px;
+  padding-left: 5px;
 }
 
 .lists .new-books form .text-field:hover,
 .lists .new-books form .text-field:focus{
   background-color: white;
+}
+
+.lists .new-books form button {
+  /* padding: 5px 0; */
+  margin-bottom: 5px;
 }
 
 .list h3 {
@@ -143,4 +193,31 @@ body {
   margin: 5px 0;
   padding: 2px 5px;
   border: 1px solid rgb(170, 177, 184);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.book-btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.book-btns button, .book-info button {
+  background-color: transparent;
+  border: none;
+  color: var(--white)
+}
+
+.book-btns button:hover, .book-info button:hover{
+  color: var(--light-pink)
+}
+
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 0px;
+  padding: 20px;
+  background-color: transparent;
 }

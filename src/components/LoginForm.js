@@ -36,32 +36,34 @@ function LoginForm(props) {
 	}; 
     
 	return (
-		<div>
-			<div >
+		<div className='form'>
+			<div>
 				<h1 className='form-title'>Log In</h1>
 				<form className='ui form' onSubmit={handleSubmit}>
-					<div className='field'>
+					<div className='input-field'>
 						<label>Username</label>
 						<input
 							value={username}
 							onChange={handleUsernameChange}
 							type='text'
-							placeholder='username'
+							// placeholder='username'
 						/>
 					</div>
-					<div className='field'>
+					<div className='input-field'>
 						<label>Password</label>
 						<input
 							value={password}
 							onChange={handlePasswordChange}
 							type='text'
-							placeholder='password'
+							// placeholder='password'
 						/>
 					</div>
 					{/* <Link to='/lists'> */}
-						<button className='ui button' type='submit'>
-							Submit
-						</button>
+					<button
+						className='ui button waves-effect btn pink lighten-2'
+						type='submit'>
+						Submit
+					</button>
 					{/* </Link> */}
 				</form>
 			</div>

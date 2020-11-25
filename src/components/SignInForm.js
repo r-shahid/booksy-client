@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-function SignInForm(props) {
+function SignInForm({ setBooks, token, setToken }) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [tok, setTok] = useState('');
 
 	const handleUsernameChange = (evt) => {
 		setUsername(evt.target.value);
@@ -12,8 +15,43 @@ function SignInForm(props) {
 		setPassword(evt.target.value);
 	};
 
-	const handleSubmit = (evt) => {
-		evt.preventDefault();
+	const autoLogin = async () => {
+		console.log('auto logging in now', tok)
+		const res = await fetch(`http://localhost:3000/auto_login`, {
+			method: 'get',
+			headers: {
+				Authorization: `Bearer ${tok}`,
+			},
+		})
+			const json = await res.json()
+			.then(() => addSampleBook());
+	};
+
+	const addSampleBook = () => {
+		axios({
+			url: `http://localhost:3000/books`,
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Authorization: `Bearer ${tok}`,
+			},
+			data: {
+				title: 'sample book',
+				author: 'sample author',
+				isTBR: true,
+				isReading: false,
+				isRead: false,
+			},
+		});
+		setToken(tok);
+	};
+
+	useEffect(() =>{
+		autoLogin()
+	},[tok])
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
 		fetch(`http://localhost:3000/users`, {
 			method: 'POST',
 			headers: {
@@ -24,40 +62,55 @@ function SignInForm(props) {
 				username,
 				password,
 			}),
+		});
+		// setUsername('');
+		// setPassword('');
+		console.log('calling /users');
+		fetch(`http://localhost:3000/login`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: JSON.stringify({
+				username,
+				password,
+			}),
 		})
-			.then((resp) => resp.json())
+			.then((resp) => {
+				console.log('/login');
+				return resp.json()
+				})
 			.then((data) => {
-				localStorage.setItem('token', data.token);
-				props.handleLogin(data.user);
+				setTok(data.token);
 			});
-		setUsername('');
-		setPassword('');
 	};
 
 	return (
-		<div>
+		<div className='form'>
 			<h1 className='form-title'>Sign Up</h1>
 			<form className='ui form' onSubmit={handleSubmit}>
-				<div className='field'>
+				<div className='input-field'>
 					<label>Username</label>
 					<input
 						value={username}
 						onChange={handleUsernameChange}
 						type='text'
-						placeholder='username'
+						// placeholder='username'
 					/>
 				</div>
-				<div className='field'>
+				<div className='input-field'>
 					<label>Password</label>
 					<input
 						value={password}
 						onChange={handlePasswordChange}
 						type='text'
-						placeholder='password'
+						// placeholder='password'
 					/>
 				</div>
-
-				<button className='ui button' type='submit'>
+				<button
+					className='ui button waves-effect btn pink lighten-2'
+					type='submit'>
 					Submit
 				</button>
 			</form>
