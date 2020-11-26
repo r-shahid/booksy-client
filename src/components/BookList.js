@@ -3,7 +3,6 @@ import React from 'react'
 const BookList = ({books}) => {
     console.log(books)
     let bookList = ''
-    // useEffect(() => {
         if (books) {
             bookList = books.map((book, id) => {
                 let title = book.title;
@@ -18,7 +17,6 @@ const BookList = ({books}) => {
             });
         }
         console.log('this is bookList', bookList);
-    // }, [])
     return(
         <>
         {bookList}

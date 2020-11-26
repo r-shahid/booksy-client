@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
-function SignInForm({ setBooks, token, setToken }) {
+function SignInForm({ setToken }) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
 	const [tok, setTok] = useState('');
@@ -17,19 +16,19 @@ function SignInForm({ setBooks, token, setToken }) {
 
 	const autoLogin = async () => {
 		console.log('auto logging in now', tok)
-		const res = await fetch(`http://localhost:3000/auto_login`, {
+		const res = await fetch(`https://rs-booksy.herokuapp.com/auto_login`, {
 			method: 'get',
 			headers: {
 				Authorization: `Bearer ${tok}`,
 			},
-		})
+		});
 			const json = await res.json()
 			.then(() => addSampleBook());
 	};
 
 	const addSampleBook = () => {
 		axios({
-			url: `http://localhost:3000/books`,
+			url: `https://rs-booksy.herokuapp.com/books`,
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -53,7 +52,7 @@ function SignInForm({ setBooks, token, setToken }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		fetch(`http://localhost:3000/users`, {
+		fetch(`https://rs-booksy.herokuapp.com/users`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -67,7 +66,7 @@ function SignInForm({ setBooks, token, setToken }) {
 		// setUsername('');
 		// setPassword('');
 		console.log('calling /users');
-		fetch(`http://localhost:3000/login`, {
+		fetch(`https://rs-booksy.herokuapp.com/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -80,8 +79,8 @@ function SignInForm({ setBooks, token, setToken }) {
 		})
 			.then((resp) => {
 				console.log('/login');
-				return resp.json()
-				})
+				return resp.json();
+			})
 			.then((data) => {
 				setTok(data.token);
 			});
@@ -97,7 +96,6 @@ function SignInForm({ setBooks, token, setToken }) {
 						value={username}
 						onChange={handleUsernameChange}
 						type='text'
-						// placeholder='username'
 					/>
 				</div>
 				<div className='input-field'>
@@ -105,8 +103,7 @@ function SignInForm({ setBooks, token, setToken }) {
 					<input
 						value={password}
 						onChange={handlePasswordChange}
-						type='text'
-						// placeholder='password'
+						type='password'
 					/>
 				</div>
 				<button

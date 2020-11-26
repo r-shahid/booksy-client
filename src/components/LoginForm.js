@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import {Link} from 'react-router-dom'
 
 function LoginForm(props) {
 	const [username, setUsername] = useState('');
@@ -15,7 +14,7 @@ function LoginForm(props) {
 
 	const handleSubmit = (evt) => {
 		evt.preventDefault();
-		fetch(`http://localhost:3000/login`, {
+		fetch(`https://rs-booksy.herokuapp.com/login`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -28,8 +27,8 @@ function LoginForm(props) {
 		})
 			.then((resp) => resp.json())
 			.then((data) => {
-				props.setToken(data.token)
-			})
+				props.setToken(data.token);
+			});
 		setUsername('');
         setPassword('');
 		console.log(username, password, "this is login info")
@@ -46,7 +45,6 @@ function LoginForm(props) {
 							value={username}
 							onChange={handleUsernameChange}
 							type='text'
-							// placeholder='username'
 						/>
 					</div>
 					<div className='input-field'>
@@ -54,17 +52,14 @@ function LoginForm(props) {
 						<input
 							value={password}
 							onChange={handlePasswordChange}
-							type='text'
-							// placeholder='password'
+							type='password'
 						/>
 					</div>
-					{/* <Link to='/lists'> */}
 					<button
 						className='ui button waves-effect btn pink lighten-2'
 						type='submit'>
 						Submit
 					</button>
-					{/* </Link> */}
 				</form>
 			</div>
 		</div>

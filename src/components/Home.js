@@ -3,7 +3,6 @@ import Nav from './Nav.js';
 import SignInForm from './SignInForm';
 import LoginForm from './LoginForm';
 import { Redirect } from 'react-router-dom';
-import heroimg from '../images/thirdtimesthecharm.png';
 
 const Home = ({ books, setBooks, token, setToken }) => {
 	const [form, setForm] = useState('');
@@ -22,24 +21,26 @@ const Home = ({ books, setBooks, token, setToken }) => {
 	};
 
 	const getBooks = async () => {
-		const res = await fetch(`http://localhost:3000/books`, {
-			method: 'get',
-			headers: {
-				Authorization: `Bearer ${token}`,
-			},
-		});
+		const res = await fetch(
+			`https://rs-booksy.herokuapp.com/books`,
+			{
+				method: 'get',
+				headers: {
+					Authorization: `Bearer ${token}`,
+				},
+			}
+		);
 		const json = await res.json();
 		setBooks(json)
 	};
 
 	const autoLogin = async () => {
-		const res = await fetch(`http://localhost:3000/auto_login`, {
+		const res = await fetch(`https://rs-booksy.herokuapp.com/auto_login`, {
 			method: 'get',
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-		})
-			.then(() => getBooks());
+		}).then(() => getBooks());
 	};
 
 	useEffect(() => {

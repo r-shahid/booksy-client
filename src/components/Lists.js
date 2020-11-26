@@ -1,13 +1,8 @@
 import React, { useEffect, useState} from 'react'
 import Header from './Header'
-import BookList from './BookList'
 import axios from 'axios'
 
 const Lists = ({ token, books, setBooks }) => {
-	const [isTBR, setIsTBR] = useState([])
-	const [isReading, setIsReading] = useState([]);
-	const [isRead, setIsRead] = useState([]);
-	const [rating, setRating] = useState(0)
 	const [click, setClick] = useState(true)
 	const [formData, setFormData] = useState({
 		title: '',
@@ -21,21 +16,21 @@ const Lists = ({ token, books, setBooks }) => {
 
 	const isReadingTrue = (book) => {
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
 			data: { isReading: true, isTBR: false },
 		});
+		setClick(!click)
+		getBooksAgain();
 		setClick(!click);
-		setClick(!click);
-		getBooksAgain()
 	};
 
 	const isReadTrue = (book) => {
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -43,32 +38,29 @@ const Lists = ({ token, books, setBooks }) => {
 			data: { isRead: true, isReading: false },
 		});
 		setClick(!click);
+		getBooksAgain()
+		setClick(!click)
 	};
-
-	// const handleRate = (e) =>{
-	// 	e.preventDefault();
-	// 	setRating({...rating, [e.target.name]:e.target.value})
-	// 	console.log(rating)
-	// }
 
 	const rateOne = (book) => {
 		console.log(book)
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${token}`,
 			},
-			data: { rating: 1},
+			data: { rating: 1 },
 		});
 		setClick(!click);
 		getBooksAgain();
+		setClick(!click);
 	}
 
 	const rateTwo = (book) => {
 		console.log(book);
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -77,12 +69,13 @@ const Lists = ({ token, books, setBooks }) => {
 		});
 		setClick(!click);
 		getBooksAgain();
+		setClick(!click);
 	};
 
 	const rateThree = (book) => {
 		console.log(book);
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -91,12 +84,13 @@ const Lists = ({ token, books, setBooks }) => {
 		});
 		setClick(!click);
 		getBooksAgain();
+		setClick(!click);
 	};
 
 	const rateFour = (book) => {
 		console.log(book);
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -105,12 +99,13 @@ const Lists = ({ token, books, setBooks }) => {
 		});
 		setClick(!click);
 		getBooksAgain();
+		setClick(!click);
 	};
 
 	const rateFive = (book) => {
 		console.log(book);
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
 			headers: {
 				Authorization: `Bearer ${token}`,
@@ -119,15 +114,16 @@ const Lists = ({ token, books, setBooks }) => {
 		});
 		setClick(!click);
 		getBooksAgain();
+		setClick(!click);
 	};
 
 	const getBooksAgain = async () => {
-		const res = await fetch(`http://localhost:3000/books`, {
+		const res = await fetch(`https://rs-booksy.herokuapp.com/books`, {
 			method: 'get',
 			headers: {
 				Authorization: `Bearer ${token}`,
-			}
-		})
+			},
+		});
 		const json = await res.json();
 		setBooks(json)
 	}
@@ -372,35 +368,8 @@ const Lists = ({ token, books, setBooks }) => {
 						<p className='title'>{title}</p>
 						<p className='author'>{author}</p>
 						{rating()}
-						{/* <div>
-							<button
-								onClick={() => rateBook(book)}
-								class='material-icons one-star'>star</button>
-							<button class='material-icons two-stars'>star</button>
-							<button class='material-icons three-stars'>star</button>
-							<button class='material-icons four-stars'>star</button>
-							<button class='material-icons five-stars'>star</button>
-						</div> */}
 					</div>
 					<div className='book-btns'>
-						{/* <div class='input-field'>
-							<form onSubmit={rateBook}>
-								<select
-									class='browser-default'
-									name='rating'
-									onChange={handleRate}>
-									<option value='' disabled selected>
-										Rate
-									</option>
-									<option value='1'>1</option>
-									<option value='2'>2</option>
-									<option value='3'>3</option>
-									<option value='4'>4</option>
-									<option value='5'>5</option>
-								</select>
-								<input className='submit' type='submit' value='Submit' />
-							</form>
-						</div> */}
 						<button onClick={() => deleteBook(book)}>
 							<i class='material-icons'>delete_forever</i>
 						</button>
@@ -421,7 +390,7 @@ const Lists = ({ token, books, setBooks }) => {
 		e.preventDefault()
 		console.log(formData)
 		axios({
-			url: `http://localhost:3000/books`,
+			url: `https://rs-booksy.herokuapp.com/books`,
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
@@ -438,12 +407,13 @@ const Lists = ({ token, books, setBooks }) => {
 			isRead: false
 		})
 		setClick(!click);
+		getBooksAgain();
 	}
 
 	const deleteBook = (book) => {
 		console.log(formData);
 		axios({
-			url: `http://localhost:3000/books/${book.id}`,
+			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'DELETE',
 			headers: {
 				'Content-Type': 'application/json',
@@ -451,12 +421,11 @@ const Lists = ({ token, books, setBooks }) => {
 			},
 		});
 		setClick(!click);
+		getBooksAgain();
+		setClick(!click);
 	} 
 
 	useEffect(() => {
-		// getIsReading();
-		// getIsRead();
-		// getIsTBR();
 		getBooksAgain()
 	}, [click]);
 	
@@ -506,56 +475,9 @@ const Lists = ({ token, books, setBooks }) => {
 					<h3>
 						READ <i class='material-icons'>book</i>
 					</h3>
-					{/* <div class='input-field'>
-						<form onSubmit={rateBook}>
-							<select
-								class='browser-default'
-								name='rating'
-								value={formData.rating}
-								onChange={handleChange}>
-								<option value="" disabled selected>Rate</option>
-								<option value='1'>1</option>
-								<option value='2'>2</option>
-								<option value='3'>3</option>
-								<option value='4'>4</option>
-								<option value='5'>5</option>
-							</select>
-							<input className='submit' type='submit' value='Submit' />
-						</form>
-					</div> */}
 					<div className='list-read'>{isReadBooks}</div>
 				</div>
 			</div>
-			{/* <div className='add-rating'>
-				<form onSubmit={rateBook}>
-					<input
-						onChange={handleRate}
-						className='text-field'
-						placeholder='title'
-						name='title'
-						value={formData.title}
-					/>
-					<select
-						class='browser-default'
-						name='rating'
-						value={formData.rating}
-						onChange={handleRate}>
-						<option value='' disabled selected>
-							Rate
-						</option>
-						<option value='1'>1</option>
-						<option value='2'>2</option>
-						<option value='3'>3</option>
-						<option value='4'>4</option>
-						<option value='5'>5</option>
-					</select>
-					<button
-						className='ui button waves-effect btn pink lighten-2'
-						type='submit'>
-						<i class='material-icons'>add</i>
-					</button>
-				</form>
-			</div> */}
 		</div>
 	);
 };;;

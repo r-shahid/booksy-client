@@ -5,8 +5,8 @@
   --brown: #3F2927;
   --other-brownish-pink: #7D524D;
   --white: #d7bbb7;
-  --pink: #B25857;
-  --light-pink: #E39299;
+  --pink: rgb(178, 88, 87);
+  --light-pink: rgb(227, 146, 153);
   --blue: #546472;
   --gradient: linear-gradient(217deg, var(--pink),  rgba(255,0,0,0) 90%),
             linear-gradient(127deg, var(--light-pink),rgba(0,255,0,0) 40%),
@@ -24,9 +24,8 @@ font-family: 'Open Sans', sans-serif; */
 body {
   background: var(--gradient);
   background-image: var(--gradient);
-  background-size: 200%;
+  background-size: 300%;
 	color:var(--white);
-  min-height: 100vh;
   animation: bg-animation 6s infinite alternate;
 }
 
@@ -39,6 +38,122 @@ body {
   }
 }
 
+.about {
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.about h1 {
+  text-shadow: -2px 2px var(--blue);
+}
+
+.about-info {
+  background-color:rgba(178, 88, 87,.3);
+  font-size: 20px;
+  padding: 20px; 
+}
+
+.about-info span {
+  font-size: 24px;
+  color: white;
+}
+
+.about-riana .riana {
+  display: block;
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  margin: auto;
+}
+
+@media screen and (min-width: 768px){
+  .about-riana .riana {
+    margin-right: 2em;
+    float: left;
+    shape-outside: circle();
+  }
+}
+
+.about-riana{
+  min-height: 350px;
+  background-color:rgba(178, 88, 87,.3);
+  font-size: 20px;
+  padding: 20px; 
+}
+
+.about-riana a {
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.about-riana a:hover{
+  color: var(--other-brownish-pink);
+}
+
+.about hr{
+  width: 90%;
+  height: 1px;
+  margin: 20px auto;
+  background-color: rgba(178, 88, 87,.4);
+  border: none;
+}
+
+.about ul{
+  margin-left: 20px;
+}
+
+/* image overlay styling from w3 schools */
+.container {
+  position: relative;
+  width: 65%;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 1;
+  transition: .5s ease;
+  background-color: var(--blue);
+}
+
+.container:hover .overlay {
+  opacity: 0;
+}
+
+.text {
+  color: white;
+  font-size: 22px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.text i {
+  font-size: 50px;
+  color: var(--light-grey)
+}
+
+@media screen and (max-width: 768px){
+  .container, .above-container{
+    display: none;
+  }
+}
 
 .nav {
   background-color: transparent;
@@ -103,6 +218,11 @@ nav {
 .input-field input[type=text]:focus + label {
   color: var(--blue);
 }
+ input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid var(--pink);
+    -webkit-box-shadow: 0 1px 0 0 #26a69a;
+    box-shadow: 0 1px 0 0 var(--pink);
+}
 
 .home .hero-img {
   text-align: center;
@@ -110,15 +230,25 @@ nav {
 }
 
 .home .hero-img h1 {
-  /* width: 100%; */
-  font-size: 120px;
+  font-size: 100px;
   font-weight: 700;
   text-shadow: -6px 6px var(--grey);
-  /* margin: 200px 0; */
+}
+
+.home .hero-img h4 {
+  text-shadow: -3px 3px 3px var(--grey);
+}
+@media screen and (min-width: 768px){
+  .home .hero-img h1{
+    font-size: 150px;
+  }
+  .home .hero-img h4 {
+    font-size: 50px;
+  }
 }
 
 .lists {
-  height: 90vh;
+  /* height: 100vh; */
 }
 
 .lists-logo {
@@ -147,45 +277,75 @@ nav {
   /* background-color: rgb(170, 177, 184, .6); */
 }
 
-.lists .new-books{
-  text-align: center;
-  margin: 10px 0 20px 0;
+.new-books form{
+  box-sizing: border-box;
 }
 
-.lists .new-books form input{
-  /* background-color: var(--other-brownish-pink); */
+.new-books form input{
+  width:100%;
   border: none;
   color: var(--other-brownish-pink);
   font-size: 15px;
   margin-left: 5px;
-  max-width: 300px;
+  margin: 3px 0;
+  background-color: var(--white);
+  padding-left: 5px;
+}
+.new-books form{
+  padding: 0 20px;
+}
+
+@media screen and (min-width: 768px){
+  .lists .new-books{
+    text-align: center;
+    margin: 10px 0 20px 0;
+  }
+
+  .lists .new-books form input{
+    margin: 3px 3px;
+    max-width: 300px;
+  }
+
+  .lists .new-books form button {
+  margin: 0 0 10px 5px;
+
+}
 }
 ::placeholder {
   color: var(--pink)
 }
 
-.lists .new-books form .text-field {
-  margin: 0 3px;
-  background-color: var(--white);
-  border: none;
-  padding-left: 5px;
-}
 
 .lists .new-books form .text-field:hover,
 .lists .new-books form .text-field:focus{
   background-color: white;
 }
 
-.lists .new-books form button {
-  /* padding: 5px 0; */
-  margin-bottom: 5px;
-}
 
 .list h3 {
   text-align: center;
   padding: 10px 0;
   font-size: 25px;
   background-color: var(--blue);
+}
+
+@media screen and (max-width: 768px){
+  .list h3{
+    height: 70px;
+  }
+
+  .lists .three-lists{
+    display: block;
+    /* justify-content: space-between; */
+    /* max-width: 1300px; */
+    padding: 0 20px;
+    margin: auto;
+  }
+
+  .list {
+    width: 100%;
+  }
+
 }
 
 .book-info {
@@ -215,7 +375,7 @@ nav {
 }
 
 .book-info .clicked{
-  color: var(--pink)
+  color: var(--pink);
 }
 
 .footer {
