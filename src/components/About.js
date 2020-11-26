@@ -6,7 +6,13 @@ const About = () => {
 
     return (
 			<div className='about'>
-				<h1>about Booksy...</h1>
+				<div className='top'>
+					<a href='/' class='material-icons'>
+						home
+					</a>
+					<h1>about Booksy...</h1>
+				</div>
+
 				<div className='about-info'>
 					<span>Booksy is the lovechild of a Trello board and Goodreads.</span>{' '}
 					It's intended to be used as a book-tracking app where users can add
@@ -55,8 +61,7 @@ const About = () => {
 					neon/vaporwave theme. See all my past work{' '}
 					<a href='https://r-shahid.github.io'>here</a>.
 					<hr />
-					Email: <a href='mailto:info@rianashahid.com'>
-					info@rianashahid.com</a>
+					Email: <a href='mailto:info@rianashahid.com'>info@rianashahid.com</a>
 				</div>
 			</div>
 		);
