@@ -31,7 +31,7 @@ function LoginForm(props) {
 			});
 		setUsername('');
         setPassword('');
-		console.log(username, password, "this is login info")
+		// console.log(username, password, "this is login info")
 	}; 
     
 	return (

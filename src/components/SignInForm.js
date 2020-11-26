@@ -65,7 +65,7 @@ function SignInForm({ setToken }) {
 		});
 		// setUsername('');
 		// setPassword('');
-		console.log('calling /users');
+		// console.log('calling /users');
 		fetch(`https://rs-booksy.herokuapp.com/login`, {
 			method: 'POST',
 			headers: {
@@ -78,7 +78,7 @@ function SignInForm({ setToken }) {
 			}),
 		})
 			.then((resp) => {
-				console.log('/login');
+				// console.log('/login');
 				return resp.json();
 			})
 			.then((data) => {

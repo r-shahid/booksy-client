@@ -12,7 +12,7 @@ const Lists = ({ token, books, setBooks }) => {
 		isRead: false
 	})
 
-	console.log(books, click, token)
+	// console.log(books, click, token)
 
 	const isReadingTrue = (book) => {
 		axios({
@@ -43,7 +43,7 @@ const Lists = ({ token, books, setBooks }) => {
 	};
 
 	const rateOne = (book) => {
-		console.log(book)
+		// console.log(book)
 		axios({
 			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
@@ -58,7 +58,7 @@ const Lists = ({ token, books, setBooks }) => {
 	}
 
 	const rateTwo = (book) => {
-		console.log(book);
+		// console.log(book);
 		axios({
 			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
@@ -73,7 +73,7 @@ const Lists = ({ token, books, setBooks }) => {
 	};
 
 	const rateThree = (book) => {
-		console.log(book);
+		// console.log(book);
 		axios({
 			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
@@ -88,7 +88,7 @@ const Lists = ({ token, books, setBooks }) => {
 	};
 
 	const rateFour = (book) => {
-		console.log(book);
+		// console.log(book);
 		axios({
 			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
@@ -103,7 +103,7 @@ const Lists = ({ token, books, setBooks }) => {
 	};
 
 	const rateFive = (book) => {
-		console.log(book);
+		// console.log(book);
 		axios({
 			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'PUT',
@@ -354,7 +354,7 @@ const Lists = ({ token, books, setBooks }) => {
 				}
 			}
 			
-			console.log(books, book.rating)
+			// console.log(books, book.rating)
 			if(book.isRead === true){
 			return (
 				<div className='book-info'>
@@ -374,15 +374,15 @@ const Lists = ({ token, books, setBooks }) => {
 	}
 
 	const handleChange = (e) => {
-		console.log(e.target.name, e.target.value);
+		// console.log(e.target.name, e.target.value);
 		e.preventDefault();
 		setFormData({...formData, [e.target.name]: e.target.value});
-		console.log(formData)
+		// console.log(formData)
 	}
 
 	const addBook = (e) =>{
 		e.preventDefault()
-		console.log(formData)
+		// console.log(formData)
 		axios({
 			url: `https://rs-booksy.herokuapp.com/books`,
 			method: 'POST',
@@ -405,7 +405,7 @@ const Lists = ({ token, books, setBooks }) => {
 	}
 
 	const deleteBook = (book) => {
-		console.log(formData);
+		// console.log(formData);
 		axios({
 			url: `https://rs-booksy.herokuapp.com/books/${book.id}`,
 			method: 'DELETE',

@@ -1,13 +1,13 @@
 import React from 'react'
 
 const BookList = ({books}) => {
-    console.log(books)
+    // console.log(books)
     let bookList = ''
         if (books) {
             bookList = books.map((book, id) => {
                 let title = book.title;
                 let author = book.author;
-                console.log(title, author);
+                // console.log(title, author);
                 return (
                     <div className='book-info'>
                         <p className='title'>{title}</p>
@@ -16,7 +16,7 @@ const BookList = ({books}) => {
                 );
             });
         }
-        console.log('this is bookList', bookList);
+        // console.log('this is bookList', bookList);
     return(
         <>
         {bookList}

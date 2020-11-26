@@ -46,8 +46,8 @@ const Home = ({ books, setBooks, token, setToken }) => {
 	useEffect(() => {
 		autoLogin()
 	}, [token]);
-	console.log(token);
-	console.log(books);
+	// console.log(token);
+	// console.log(books);
 
 	return (
 		<div className='home'>
