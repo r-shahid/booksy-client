@@ -135,7 +135,7 @@ const Lists = ({ token, books, setBooks }) => {
 		tbrBooks = books.map((book) => {
 			let title = book.title;
 			let author = book.author;
-			if (book.isTBR == true){
+			if (book.isTBR === true){
 			return (
 				<div className='book-info'>
 					<div>
@@ -160,7 +160,7 @@ const Lists = ({ token, books, setBooks }) => {
 		isReadingBooks = books.map((book) => {
 			let title = book.title;
 			let author = book.author;
-			if (book.isReading == true){
+			if (book.isReading === true){
 			return (
 				<div className='book-info'>
 					<div>
@@ -219,7 +219,6 @@ const Lists = ({ token, books, setBooks }) => {
 								</button>
 							</>
 						);
-						break;
 					case 2:
 						return (
 							<>
@@ -250,7 +249,6 @@ const Lists = ({ token, books, setBooks }) => {
 								</button>
 							</>
 						);
-						break;
 					case 3:
 						return (
 							<>
@@ -281,7 +279,6 @@ const Lists = ({ token, books, setBooks }) => {
 								</button>
 							</>
 						);
-						break;
 					case 4:
 						return (
 							<>
@@ -312,7 +309,6 @@ const Lists = ({ token, books, setBooks }) => {
 								</button>
 							</>
 						);
-						break;
 					case 5:
 						return (
 							<>
@@ -343,7 +339,6 @@ const Lists = ({ token, books, setBooks }) => {
 								</button>
 							</>
 						);
-						break;
 					default:
 						return (
 							<>
@@ -356,12 +351,11 @@ const Lists = ({ token, books, setBooks }) => {
 								<button onClick={()=> rateFive(book)} class='material-icons five-stars'>star</button>
 							</>
 						);
-						break;
 				}
 			}
 			
 			console.log(books, book.rating)
-			if(book.isRead == true){
+			if(book.isRead === true){
 			return (
 				<div className='book-info'>
 					<div>

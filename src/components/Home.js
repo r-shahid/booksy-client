@@ -56,7 +56,10 @@ const Home = ({ books, setBooks, token, setToken }) => {
 				<h1>BOOKSY</h1>
 				<h4>the better book tracker</h4>
 			</div>
-			{renderForm()}
+			<div id='login-signup'>
+				{renderForm()}
+			</div>
+			
 			{books[0] ? <Redirect to='/lists' /> : console.log('not redirecting')}
 		</div>
 	);

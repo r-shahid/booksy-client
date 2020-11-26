@@ -12,10 +12,18 @@ const Nav =(props) =>{
 						</a>
 						<ul class='right'>
 							<li>
-								<a onClick={() => props.handleForm('signUp')}>Sign Up</a>
+								<a
+									href='#login-signup'
+									onClick={() => props.handleForm('signUp')}>
+									Sign Up
+								</a>
 							</li>
 							<li>
-								<a onClick={() => props.handleForm('login')}>Log In</a>
+								<a
+									href='#login-signup'
+									onClick={() => props.handleForm('login')}>
+									Log In
+								</a>
 							</li>
 							<li>
 								<a href='/about'>About</a>
