@@ -247,9 +247,6 @@ nav {
   }
 }
 
-.lists {
-  /* height: 100vh; */
-}
 
 .lists-logo {
   text-align: center;
@@ -272,9 +269,7 @@ nav {
 }
 
 .list {
-  /* border: 1px solid black; */
   width: 33%;  
-  /* background-color: rgb(170, 177, 184, .6); */
 }
 
 .new-books form{
@@ -336,8 +331,6 @@ nav {
 
   .lists .three-lists{
     display: block;
-    /* justify-content: space-between; */
-    /* max-width: 1300px; */
     padding: 0 20px;
     margin: auto;
   }
