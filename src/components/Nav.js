@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 import "../App.css"
 import logo from '../images/booksy_logo_clear.png';
 
@@ -26,7 +27,8 @@ const Nav =(props) =>{
 								</a>
 							</li>
 							<li>
-								<a href='/about'>About</a>
+								{/* <a href='/about'>About</a> */}
+								<Link to='/about'>About</Link>
 							</li>
 						</ul>
 					</div>

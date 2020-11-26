@@ -14,10 +14,10 @@ const Main = () => {
             <Route exact path='/'>
                 <Home token={token} setToken={setToken} setBooks={setBooks} books={books}/>
             </Route>
-            <Route exact path='/lists'>
+            <Route path='/lists'>
                 <Lists token={token} books={books} setBooks={setBooks}/>
             </Route>
-            <Route exact path='/about'>
+            <Route path='/about'>
                 <About />
             </Route>
         </Switch>
