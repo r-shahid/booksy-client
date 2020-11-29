@@ -25,8 +25,9 @@ body {
   background: var(--gradient);
   background-image: var(--gradient);
   background-size: 300%;
-	color:var(--white);
-  animation: bg-animation 6s infinite alternate;
+  color:var(--white);
+  /* height: 100vh; */
+  /* animation: bg-animation 6s infinite alternate; */
 }
 
 @keyframes bg-animation {
@@ -35,6 +36,12 @@ body {
   }
   100% {
     background-position: right;
+  }
+}
+
+@media screen and (min-width: 475px){
+  body{
+    animation: bg-animation 6s infinite alternate;
   }
 }
 
@@ -230,10 +237,11 @@ nav {
 .input-field input[type=text]:focus + label {
   color: var(--blue);
 }
- input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
-    border-bottom: 1px solid var(--pink);
-    -webkit-box-shadow: 0 1px 0 0 #26a69a;
-    box-shadow: 0 1px 0 0 var(--pink);
+
+input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]), textarea.materialize-textarea:focus:not([readonly]) {
+  border-bottom: 1px solid var(--pink);
+  -webkit-box-shadow: 0 1px 0 0 #26a69a;
+  box-shadow: 0 1px 0 0 var(--pink);
 }
 
 .home .hero-img {
@@ -242,7 +250,7 @@ nav {
 }
 
 .home .hero-img h1 {
-  font-size: 100px;
+  /* font-size: 80px; */
   font-weight: 700;
   text-shadow: -6px 6px var(--grey);
 }
@@ -259,6 +267,9 @@ nav {
   }
 }
 
+.lists {
+  height: 100vh;
+}
 
 .lists-logo {
   text-align: center;
@@ -385,8 +396,11 @@ nav {
 
 .footer {
   text-align: center;
-  margin-top: 50px;
-  margin-bottom: 0px;
   padding: 20px;
+  margin-top: 100px;
   background-color: transparent;
+  position: relative;
+	right: 0;
+	bottom: 0;
+	left: 0;
 }
